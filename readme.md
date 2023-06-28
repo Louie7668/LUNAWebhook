@@ -1,69 +1,68 @@
+# GitHub Webhook Discord Integration
 
-```bash
-  npm install
-```
-    
-## Installation
-Enter your webhook and your port into the config
-Port Forward the port if needed
-Go to your github repository and in the webhook section enter it like this below
+This project allows you to integrate GitHub webhooks with Discord using Node.js and the discord-webhook-node library. Whenever a webhook event is triggered on a GitHub repository, a corresponding message will be sent to a specified Discord channel.
 
-http://ENTER_IP_HERE:ENTER_PORT_HERE/recieve_github
+## Prerequisites
 
+Before using this project, make sure you have the following prerequisites installed:
 
-make sure to set the ENTER_IP_HERE:ENTER_PORT_HERE to whatever you configged + your servers ip
-```bash
-  npm install
-  npm run start
-```
+- Node.js (version 12 or above)
+- npm (Node Package Manager)
 
+## Getting Started
 
-You could change the actual embed to make it look different it does require quite a bit of know how for js
+To get started with the GitHub webhook Discord integration, follow these steps:
 
-Also its recommended if your commiting multiple thing with descriptions to push them all seperately as it looks cleaner.
-  
-## Usage/Examples
+1. Clone the repository to your local machine:
 
-```javascript
-  commits: [
-    {
-      id
-      tree_id
-      distinct
-      message
-      timestamp
-      url
-      author: [Object]
-      committer: [Object]
-      added
-      removed
-      modified: [Array]
-    }
-  ],
-  head_commit: {
-    id
-    tree_id
-    distinct
-    message
-    timestamp
-    url
-    author: {
-      name
-      email
-      username
-    },
-    committer: {
-      name
-      email
-      username
-    },
-    added
-    removed
-    modified
-  }
-}
-```
+```git clone https://github.com/your-username/github-webhook-discord-integration.git```
+
+2. Navigate to the project directory:
+
+```cd github-webhook-discord-integration```
+
+3. Install the dependencies using npm:
 
 
-#preview
-[![Screenshot-2023-06-28-032327.png](https://i.postimg.cc/HsVGxcp4/Screenshot-2023-06-28-032327.png)](https://postimg.cc/VdQZZN0d)
+
+4. Configure the webhook URL:
+
+- Open the `config.js` file in a text editor.
+- Replace the value of `config.webhook` with the URL of your Discord webhook. You can create a webhook in your Discord server settings.
+
+
+5. Start the application:
+
+```npm install```
+
+This will start the Node.js server and listen for incoming GitHub webhook events.
+
+6. Configure the GitHub repository webhook:
+
+- Open your GitHub repository in a web browser.
+- Go to **Settings** -> **Webhooks** -> **Add webhook**.
+- In the **Payload URL** field, enter the URL of your Node.js server where the application is running (`http://your-server-ip:your-port/recieve_github`).
+- Select the events you want to trigger the webhook (e.g., push, pull request, etc.).
+- Save the webhook configuration.
+
+7. Testing the integration:
+
+- Make changes to your GitHub repository that trigger the configured webhook events (e.g., push a new commit).
+- Check the Discord channel specified in the webhook URL. You should see messages corresponding to the triggered events.
+
+## Customization
+
+- You can customize the messages sent to Discord by modifying the code in the `app.post('/recieve_github')` route in `index.js`. Update the message formats, colors, and other properties based on your preference.
+
+## Limitations
+
+- The maximum file size limit for pushing files is set to 2GB by default. You can adjust this limit by modifying the `app.use(bodyParser.json({ limit: '2000mb' }))` line in `index.js`.
+
+## Troubleshooting
+
+- If you encounter any issues or errors, ensure that you have correctly followed the steps above and that all dependencies are properly installed.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
