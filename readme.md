@@ -1,5 +1,7 @@
 # GitHub Webhook Discord Integration
 
+Made by kerfoot on discord
+
 This project allows you to integrate GitHub webhooks with Discord using Node.js and the discord-webhook-node library. Whenever a webhook event is triggered on a GitHub repository, a corresponding message will be sent to a specified Discord channel.
 
 ## Prerequisites
