@@ -4,6 +4,15 @@ Made by kerfoot on discord
 
 This project allows you to integrate GitHub webhooks with Discord using Node.js and the discord-webhook-node library. Whenever a webhook event is triggered on a GitHub repository, a corresponding message will be sent to a specified Discord channel.
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Customization](#customization)
+- [Limitations](#limitations)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
+
 ## Prerequisites
 
 Before using this project, make sure you have the following prerequisites installed:
@@ -51,6 +60,25 @@ This will start the Node.js server and listen for incoming GitHub webhook events
 
 - Make changes to your GitHub repository that trigger the configured webhook events (e.g., push a new commit).
 - Check the Discord channel specified in the webhook URL. You should see messages corresponding to the triggered events.
+
+## Using Commits and Descriptions
+When making commits to your GitHub repository, you can use a specific format for the commit message to generate formatted messages in the Discord channel. The recommended format is as follows:
+
+Title: <type>(<scope>): <subject>
+
+Description: <description>
+
+<type>: Describes the type of change (e.g., feat, fix, docs, style, refactor, test, chore, etc.).
+<scope> (optional): Describes the scope of the change (e.g., files, server, client, etc.).
+<subject>: Briefly summarizes the change.
+<description> (optional): Provides a detailed description of the change.
+
+For example, a commit message could be:
+
+```Title: tweak(files): added bank heist```
+
+```Description: Added server and client-side bank heist. Tweaked the server script.```
+
 
 ## Customization
 
