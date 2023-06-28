@@ -23,7 +23,7 @@ To get started with the GitHub webhook Discord integration, follow these steps:
 
 3. Install the dependencies using npm:
 
-
+```npm install```
 
 4. Configure the webhook URL:
 
@@ -33,7 +33,7 @@ To get started with the GitHub webhook Discord integration, follow these steps:
 
 5. Start the application:
 
-```npm install```
+```npm run start```
 
 This will start the Node.js server and listen for incoming GitHub webhook events.
 
