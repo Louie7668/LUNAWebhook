@@ -75,7 +75,7 @@ app.post('/recieve_github', (req, res) => {
       .setColor('#57f288')
       .setTimestamp();
 
-    // End of other updates //d
+    // End of other updates //
 
     let commitFieldText = '';
     let numCommits = 0;
