@@ -8,19 +8,17 @@ const { Webhook, MessageBuilder } = require('discord-webhook-node');
 const config = require('./config');
 const app = express();
 
-
 // Listen this right here is the limit for pushing files since before adding a big file caused issues (2GB RECOMMENDED)
 app.use(bodyParser.json({ limit: '2000mb' }));
 app.use(bodyParser.urlencoded({ limit: '2000mb', extended: true }));
 
 const hook = new Webhook(config.webhook);
 
-
 // Reminder to put "/recieve_github" at the end of the github webhook like this [http://57.128.132.174:30145/recieve_github] //
 app.post('/recieve_github', (req, res) => {
   const branchName = req.body.ref ? req.body.ref.split('/').pop() : '';
 
-// Start of other updates //
+  // Start of other updates //
 
   if (req.body.created) {
     const embed = new MessageBuilder()
@@ -77,7 +75,7 @@ app.post('/recieve_github', (req, res) => {
       .setColor('#57f288')
       .setTimestamp();
 
-// End of other updates //
+    // End of other updates //
 
     let commitFieldText = '';
     let numCommits = 0;
@@ -119,7 +117,7 @@ app.post('/recieve_github', (req, res) => {
         message = title + (descriptionLines[0] ? '\n\n' + descriptionLines[0] : '');
       }
 
-      commitFieldText += '[`' + req.body.commits[i].id.substring(0, 7) + '`](' + req.body.commits[i].url + ') ' + message + ' - ' + req.body.commits[i].author.username + '\n';
+      commitFieldText += '[`' + req.body.commits[i].id.substring(0, 7) + '`](' + req.body.commits[i].url + ') ' + message + ' - ' + req.body.commits[i].author.username + '\n\n';
       numCommits++;
     }
 
