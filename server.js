@@ -106,14 +106,9 @@ app.post('/recieve_github', (req, res) => {
       const lines = message.split('\n');
 
       let title = lines[0];
-      let descriptionLines = lines.slice(1).filter(line => line.trim() !== '');
+      let description = lines.slice(1).join('\n');
 
-      // Add a space between each line in the commit message
-      const newMessage = descriptionLines.map(line => line.trim()).join(' ');
-
-      message = title + (newMessage ? ' ' + newMessage : '');
-
-      commitFieldText += '[`' + req.body.commits[i].id.substring(0, 7) + '`](' + req.body.commits[i].url + ') ' + message + ' - ' + req.body.commits[i].author.username + '\n\n';
+      commitFieldText += '[`' + req.body.commits[i].id.substring(0, 7) + '`](' + req.body.commits[i].url + ')\n' + title + '\n' + description + '\n- ' + req.body.commits[i].author.username + '\n\n';
       numCommits++;
     }
 
