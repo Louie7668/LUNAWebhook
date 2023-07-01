@@ -106,7 +106,7 @@ app.post('/recieve_github', (req, res) => {
       const lines = message.split('\n');
 
       let title = lines[0];
-      let description = lines.slice(1).join('\n').replace(/(?<!\S)(?=\S)/g, '');
+      let description = lines.slice(1).map(line => line.startsWith(' ') ? line : ' ' + line).join('\n');
 
       commitFieldText += '[`' + req.body.commits[i].id.substring(0, 7) + '`](' + req.body.commits[i].url + ')\n' + title + '\n' + description + '\n- ' + req.body.commits[i].author.username + '\n\n';
       numCommits++;
