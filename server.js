@@ -1,6 +1,4 @@
 // Made by Ker (kerfoot) on discord 
-// LUNA Studios Copyright © 2023 
-// All rights reserved Unauthorized use or distribution is strictly prohibited 
 
 const express = require('express');
 const bodyParser = require('body-parser');
